@@ -380,6 +380,7 @@ DIST          = /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/spec_pre.p
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/spec_post.prf \
+		../../.qmake.stash \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -735,6 +736,7 @@ Makefile: ../../Workidge.pro /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/linux-
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -1081,6 +1083,7 @@ Makefile: ../../Workidge.pro /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/linux-
 /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/qt_config.prf:
 /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/toolchain.prf:
 /home/superatraction/Qt/6.7.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -1159,9 +1162,10 @@ compiler_moc_header_make_all: moc_httpserver.cpp moc_systrayicon.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_httpserver.cpp moc_systrayicon.cpp
 moc_httpserver.cpp: ../../httpserver.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/QTcpServer \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtcpserver.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QObject \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobject.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qglobal.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qtversionchecks.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qtconfiginclude.h \
@@ -1206,11 +1210,6 @@ moc_httpserver.cpp: ../../httpserver.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qtresource.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qttranslation.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkexports.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobject.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qtmetamacros.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qfunctionaltools_impl.h \
@@ -1263,6 +1262,11 @@ moc_httpserver.cpp: ../../httpserver.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qscopeguard.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobject_impl.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qbindingstorage.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/QTcpServer \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtcpserver.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkexports.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qabstractsocket.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qhostaddress.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qshareddata.h \
@@ -1281,7 +1285,8 @@ moc_httpserver.cpp: ../../httpserver.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtcpsocket.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qvariant.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/q23utility.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QObject \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QMap \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QString \
 		moc_predefs.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/libexec/moc
 	/home/superatraction/Qt/6.7.1/gcc_64/libexec/moc $(DEFINES) --include /mnt/DATA/Documents/Qt/Workidge/build/Desktop_Qt_6_7_1-Debug/moc_predefs.h -I/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/linux-g++ -I/mnt/DATA/Documents/Qt/Workidge -I/home/superatraction/Qt/6.7.1/gcc_64/include -I/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets -I/home/superatraction/Qt/6.7.1/gcc_64/include/QtGui -I/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork -I/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../httpserver.h -o moc_httpserver.cpp
@@ -1480,6 +1485,9 @@ moc_systrayicon.cpp: ../../systrayicon.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qdialog.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QCoreApplication \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QProcess \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qprocess.h \
 		moc_predefs.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/libexec/moc
 	/home/superatraction/Qt/6.7.1/gcc_64/libexec/moc $(DEFINES) --include /mnt/DATA/Documents/Qt/Workidge/build/Desktop_Qt_6_7_1-Debug/moc_predefs.h -I/home/superatraction/Qt/6.7.1/gcc_64/mkspecs/linux-g++ -I/mnt/DATA/Documents/Qt/Workidge -I/home/superatraction/Qt/6.7.1/gcc_64/include -I/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets -I/home/superatraction/Qt/6.7.1/gcc_64/include/QtGui -I/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork -I/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../systrayicon.h -o moc_systrayicon.cpp
@@ -1501,9 +1509,10 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 ####### Compile
 
 httpserver.o: ../../httpserver.cpp ../../httpserver.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/QTcpServer \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtcpserver.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QObject \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobject.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qglobal.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qtversionchecks.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qtconfiginclude.h \
@@ -1548,11 +1557,6 @@ httpserver.o: ../../httpserver.cpp ../../httpserver.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qtresource.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qttranslation.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkexports.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobject.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qtmetamacros.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qfunctionaltools_impl.h \
@@ -1605,6 +1609,11 @@ httpserver.o: ../../httpserver.cpp ../../httpserver.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qscopeguard.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qobject_impl.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qbindingstorage.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/QTcpServer \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtcpserver.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkexports.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qabstractsocket.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qhostaddress.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qshareddata.h \
@@ -1623,8 +1632,11 @@ httpserver.o: ../../httpserver.cpp ../../httpserver.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtcpsocket.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qvariant.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/q23utility.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QObject \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QDebug
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QMap \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QString \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QDebug \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QRegularExpression \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qregularexpression.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o httpserver.o ../../httpserver.cpp
 
 main.o: ../../main.cpp /home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QCoreApplication \
@@ -1788,6 +1800,7 @@ main.o: ../../main.cpp /home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QCore
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qlocale.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtGui/qguiapplication_platform.h \
 		../../httpserver.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QObject \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/QTcpServer \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtcpserver.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1798,7 +1811,8 @@ main.o: ../../main.cpp /home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QCore
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qiodevice.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/QTcpSocket \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtNetwork/qtcpsocket.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QObject \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QMap \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QString \
 		../../systrayicon.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/QSystemTrayIcon \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qsystemtrayicon.h \
@@ -1833,7 +1847,12 @@ main.o: ../../main.cpp /home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QCore
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/QMessageBox \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qdialog.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qdialogbuttonbox.h
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QProcess \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qprocess.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QFile \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qfile.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qfiledevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
 
 systrayicon.o: ../../systrayicon.cpp ../../systrayicon.h \
@@ -2029,7 +2048,10 @@ systrayicon.o: ../../systrayicon.cpp ../../systrayicon.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/QMessageBox \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qdialog.h \
-		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qdialogbuttonbox.h
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QCoreApplication \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/QProcess \
+		/home/superatraction/Qt/6.7.1/gcc_64/include/QtCore/qprocess.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o systrayicon.o ../../systrayicon.cpp
 
 moc_httpserver.o: moc_httpserver.cpp 

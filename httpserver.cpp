@@ -29,19 +29,41 @@ void HttpServer::onNewConnection()
 void HttpServer::onReadyRead()
 {
     QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
+    if (!socket) {
+        return;
+    }
+
     while (socket->canReadLine())
     {
-        QString request = socket->readLine();
-        qDebug() << "Request received:" << request;
-        handleRequest(socket, request);
+        QString requestLine = socket->readLine().trimmed();
+        if (requestLine.isEmpty()) {
+            // Fin des en-têtes, traitement de la requête
+            handleRequest(socket);
+            return;
+        }
+
+        // Stocker les lignes de la requête pour analyse ultérieure
+        if (!socket->property("request").isValid()) {
+            socket->setProperty("request", QVariant::fromValue(QStringList()));
+        }
+
+        QStringList requestLines = socket->property("request").toStringList();
+        requestLines.append(requestLine);
+        socket->setProperty("request", QVariant::fromValue(requestLines));
     }
 }
 
-void HttpServer::handleRequest(QTcpSocket *socket, const QString &request)
+void HttpServer::handleRequest(QTcpSocket *socket)
 {
+    QStringList requestLines = socket->property("request").toStringList();
+    if (requestLines.isEmpty()) {
+        socket->close();
+        return;
+    }
+
     // Parse the request line
-    QRegularExpression requestLineRegex("^(\\S+)\\s(\\S+)\\sHTTP/1.1$");
-    QRegularExpressionMatch match = requestLineRegex.match(request);
+    QRegularExpression requestLineRegex("^(\\S+)\\s(\\S+)\\sHTTP/1\\.1$");
+    QRegularExpressionMatch match = requestLineRegex.match(requestLines.first());
     if (!match.hasMatch())
     {
         qDebug() << "Invalid request line";
@@ -55,16 +77,14 @@ void HttpServer::handleRequest(QTcpSocket *socket, const QString &request)
     QByteArray body;
 
     // Read the headers
-    while (socket->canReadLine())
-    {
-        QString line = socket->readLine();
-        if (line == "\r\n")
-        {
+    for (int i = 1; i < requestLines.size(); ++i) {
+        const QString& line = requestLines[i];
+        if (line.isEmpty()) {
+            // End of headers
             break;
         }
         QStringList headerParts = line.split(": ");
-        if (headerParts.size() == 2)
-        {
+        if (headerParts.size() == 2) {
             headers[headerParts[0]] = headerParts[1].trimmed();
         }
     }

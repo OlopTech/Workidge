@@ -23,7 +23,7 @@ private slots:
 
 private:
     QTcpServer *server;
-    void handleRequest(QTcpSocket *socket, const QString &request);
+    void handleRequest(QTcpSocket *socket); // Changement ici : Un seul argument
     QString generateResponse(const QString &method, const QString &path, const QMap<QString, QString> &headers, const QByteArray &body);
 };
 
