@@ -1,6 +1,10 @@
 #include "httpserver.h"
 #include <QDebug>
 #include <QRegularExpression>
+#include <QFile>
+#include <QFileInfo>
+#include <QMimeDatabase>
+#include <QMimeType>
 
 HttpServer::HttpServer(QObject *parent) : QObject(parent)
 {
@@ -97,27 +101,60 @@ void HttpServer::handleRequest(QTcpSocket *socket)
     }
 
     // Generate and send the response
-    QString response = generateResponse(method, path, headers, body);
-    socket->write(response.toUtf8());
+    QByteArray response = generateResponse(method, path, headers, body);
+    socket->write(response);
     socket->flush();
     socket->close();
 }
 
-QString HttpServer::generateResponse(const QString &method, const QString &path, const QMap<QString, QString> &headers, const QByteArray &body)
+QByteArray HttpServer::generateResponse(const QString &method, const QString &path, const QMap<QString, QString> &headers, const QByteArray &body)
 {
     Q_UNUSED(headers);
     Q_UNUSED(body);
 
+    QByteArray response;
+
     if (method == "GET" && path == "/")
     {
-        return "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nHello, World!";
+        response.append("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n");
+        response.append("Hello, World!");
     }
     else if (method == "GET" && path == "/test")
     {
-        return "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nThis is a test page!";
+        response.append("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n");
+        response.append("This is a test page!");
+    }
+    else if (method == "GET" && path.startsWith("/getfile/cc/"))
+    {
+        QString filePath = path.mid(QString("/getfile/cc/").length());
+        QFile file(filePath);
+
+        if (file.exists() && file.open(QIODevice::ReadOnly))
+        {
+            QFileInfo fileInfo(file);
+            QMimeDatabase mimeDb;
+            QMimeType mimeType = mimeDb.mimeTypeForFile(fileInfo);
+            QByteArray fileContent = file.readAll();
+            file.close();
+
+            response.append("HTTP/1.1 200 OK\r\n");
+            response.append("Content-Type: " + mimeType.name().toUtf8() + "\r\n");
+            response.append("Content-Disposition: attachment; filename=\"" + fileInfo.fileName().toUtf8() + "\"\r\n");
+            response.append("Content-Length: " + QByteArray::number(fileContent.size()) + "\r\n");
+            response.append("\r\n");
+            response.append(fileContent);
+        }
+        else
+        {
+            response.append("HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n");
+            response.append("File not found.");
+        }
     }
     else
     {
-        return "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\nPage not found.";
+        response.append("HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n");
+        response.append("Page not found.");
     }
+
+    return response;
 }
